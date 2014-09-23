@@ -28,6 +28,7 @@ a{outline:none; text-decoration:none;}
 
 .fl_left{float:left;}
 .fl_right{float:right;}
+.fl_center{float:middle;}
 
 img{width:auto; max-width:100%; height:auto; margin:0; padding:0; border:none; line-height:normal; vertical-align:middle;}
 .imgl{float:left; margin:0 15px 10px 0; clear:left;}
