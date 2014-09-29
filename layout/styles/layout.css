@@ -60,7 +60,7 @@ File: Layout CSS
 #container #content{}
 
 /* Comments */
-#comments ul{margin:0 0 40px 0; padding:0; list-style:none;}
+#comments ul{margin:0 0 40px 0; padding:0; list-style:nno;}
 #comments li{margin:0 0 10px 0; padding:15px;}
 #comments .avatar{float:right; margin:0 0 10px 10px; padding:3px; border:1px solid;}
 #comments address{font-weight:bold;}
@@ -96,7 +96,7 @@ File: Layout CSS
 
 /* Navigation
 ---------------------------------------------------------------------------------------------------------------*/
-nav ul, nav ol{margin:0; padding:0; list-style:none;}
+nav ul, nav ol{margin:0; padding:0; list-style:nno;}
 
 #mainav .drop:after, #mainav li li .drop:after, #breadcrumb li a:after, .sidebar nav a:after{position:absolute; font-family:"FontAwesome"; font-size:10px; line-height:10px;}
 
