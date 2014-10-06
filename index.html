@@ -5,21 +5,19 @@
 <link rel="shortcut icon" href="images/yandex.png" />
 <meta charset="utf-8">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body id="top">
-<!-- ################################################################################################ --> 
-<!-- ################################################################################################ --> 
-<!-- ################################################################################################ -->
 <div class="wrapper row0">
   <header id="header" class="clear"> 
     <div id="logo">
-      <h1><a href="index.html">Richard Cooke</a></h1>
+      <h1><font color="#FDC703">Richard Cooke</font></h1>
     </div>
     <nav id="mainav">
       <ul class="clear">
-        <li><a data-scroll href="index.html">Home</a></li>
-        <li><a data-scroll href="#Education">Education</a></li>
-        <li><a data-scroll href="#Experience">Experience</a></li>
+        <li><a data-scroll href="#Home_anchor">Home</a></li>
+        <li><a data-scroll href="#Education_anchor">Education</a></li>
+        <li><a data-scroll href="#Experience_anchor">Experience</a></li>
         <li><a data-scroll href="#Contact">Contact</a></li>
       </ul>
     </nav>
@@ -27,17 +25,19 @@
 </div>
 <!-- ################################################################################################ -->
 <div class="wrapper row1" style="background-image:url(images/union.png)">
+<a id="Home_anchor" class="anchor"></a>
   <div class="overlay"> 
-    <div id="intro">
+    <div>
       <div class="txtblock">
-        <h2 class="nospace push15 uppercase">The Driven, Enthusiastic Worker For Your Team</h2>
+      	<h1 class="logo push30"><center>If you're not using our product every day, we can do a better job</center></h1>
+        <p class="nospace push30"><center>As a computer science engineer at the University of Michigan I have developed a strong technical background but my newest passion has become design and customer oriented development.  Recent experiences have given me the opportunity to use my communication skills to develop relationships with customers and design products that exactly fit their needs.  Using my technical background I am then able to communicate to a development team these designs and collaborate on how we can work to create them. Sure I can hack at your projects for hours on end, and enjoy doing just that, but delivery to the customer is much more rewarding when your product does exactly what it's supposed to and becomes part of their everyday tools.</center></p>
       </div>
     </div>
   </div>
 </div>
 <!-- ################################################################################################ -->
 <div class="wrapper row4">
-<a id="Education"></a>
+<a id="Education_anchor" class="anchor"></a>
   <div id="logo"><h1><center>Education</center></h1></div>
   <main id="container" class="clear">
     <ul class="nospace center clear">
@@ -63,7 +63,7 @@
 </div>
 <!-- ################################################################################################ -->
 <div class="wrapper row3">
-<a id="Experience"></a>
+<a id="Experience_anchor" class="anchor"></a>
 <div id="logo"><h1><center>Experience</center></h1></div>
   <main id="container"> 
     <ul class="company_list center">
@@ -134,4 +134,6 @@
 <script type="text/javascript">
 	smoothScroll.init();
 </script>
+<script src="js/stickyNavBar.js"></script>
+<script src="js/myJquery.js"></script>
 </html>
