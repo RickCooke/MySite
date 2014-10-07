@@ -19,6 +19,6 @@ $(document).ready(function(){
 		$li1.fadeOut();
 		$li2.fadeOut();
 		$li3.fadeOut();
-		$li4.fadeOut();
+		$li4.fadeOut();	
 	});
 });
