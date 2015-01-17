@@ -11,6 +11,14 @@
           xfbml      : true,
           version    : 'v2.1'
         });
+        FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+            console.log('Logged in.');
+          }
+          else {
+            FB.login();
+          }
+        });
         FB.api('/me', function(response){
                 console.log(JSON.stringify(response));  
         });
