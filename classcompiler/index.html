@@ -82,10 +82,11 @@
         FB.api('/me', function(response) {
           console.log('Successful login for: ' + response.name);
           document.getElementById('status').innerHTML =
-            'Thanks for logging in, ' response.name + '!';
+            'Thanks for logging in, ' + response.name + '!';
         });
       }
     </script>
+
     <!--
       Below we include the Login Button social plugin. This button uses
       the JavaScript SDK to present a graphical Login button that triggers
