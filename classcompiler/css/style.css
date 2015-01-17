@@ -25,7 +25,25 @@
 	background-color: blue;
 }
 
+.sidebar table tr{
+	border-bottom: 2px white;
+}
+
+.sidebar table tr td{
+	width: 100%;
+	font-size: 24px;
+	line-height: 2.0;
+	color: white;
+	text-align: center;
+}
+
 #fb_pic{
-	height: 40%;
+	height: 25%;
 	width: 40%;
+	margin-left: 30%;
+	border-radius: 50%;
+	border-color: white;
+	margin-top: 10%;
+	border-color: white;
+	border: white 2px;
 }
