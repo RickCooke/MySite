@@ -82,7 +82,8 @@
         FB.api('/me', function(response) {
           console.log('Successful login for: ' + response.name);
           document.getElementById('status').innerHTML =
-            'Thanks for logging in, ' + response.name + '!';
+            'Thanks for logging in, ' + response.name + '! Your user id is: '
+            + respose.authRespose.userID + " " response.id ;
         });
       }
     </script>
@@ -93,6 +94,12 @@
       the FB.login() function when clicked.
     -->
     <div id="login_button_container">
+        <h1>
+        Welcome to ClassCompiler!
+        </h1>
+        <p>
+        Login with Facebook to see what classes you share with your friends!
+        </p>
         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
         </fb:login-button>
 
