@@ -18,11 +18,14 @@
 
 .sidebar{
 	width: 25%;
+	height: 100%;
 	left: 0;
 	top: 0;
 	bottom: 0;
 	position: absolute;
 	background-color: blue;
+	align-content: center;
+	align-items: center;
 }
 
 .sidebar table{
@@ -31,13 +34,12 @@
 
 .sidebar table tr td{
 	width: 100%;
-	font-size: 36px;
+	font-size: 40px;
 	color: white;
 	text-align: center;
 	padding-top: 5%;
 	padding-bottom: 5%;
-	border-bottom: 5px;
-	border-color: white;
+	border-bottom: 2px solid powderblue;
 }
 
 #fb_pic{
@@ -48,4 +50,12 @@
 	margin-top: 10%;
 	border-color: white;
 	border: white 2px;
+}
+
+#logo{
+	bottom: 0;
+	padding-bottom: 5%;
+	height: 150px;
+	width: 150px;
+	align-self: center;
 }
