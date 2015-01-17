@@ -31,11 +31,6 @@
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
 
   window.fbAsyncInit = function() {
   FB.init({
@@ -57,6 +52,11 @@
   //    your app or not.
   //
   // These three cases are handled in the callback function.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
 
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
