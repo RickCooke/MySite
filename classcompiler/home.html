@@ -11,6 +11,9 @@
           xfbml      : true,
           version    : 'v2.1'
         });
+        FB.api('/me', function(response){
+                console.log(JSON.stringify(response));  
+        });
       };
 
       (function(d, s, id){
@@ -21,9 +24,6 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
         
-        FB.api('/me', function(response){
-                console.log(JSON.stringify(response));  
-        });
     </script>
     You're already logged in!
     <div id="fb_content">
