@@ -7,7 +7,7 @@
     <script>
         FB.api('/me', function(response){
             document.getElementById("fb_content").innerHTML = JSON.stringify(response);   
-        }
+        });
     </script>
     You're already logged in!
     <div id="fb_content">
