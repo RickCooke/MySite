@@ -4,7 +4,26 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <script src="js/fb.js">
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '743159892428841',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+        
+        FB.api('/me', function(response){
+                console.log(JSON.stringify(response));  
+        };
     </script>
     You're already logged in!
     <div id="fb_content">
