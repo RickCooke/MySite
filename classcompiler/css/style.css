@@ -32,9 +32,10 @@
 .sidebar table tr td{
 	width: 100%;
 	font-size: 24px;
-	line-height: 2.0;
 	color: white;
 	text-align: center;
+	padding-top: 3%;
+	padding-bottom: 3%;
 }
 
 #fb_pic{

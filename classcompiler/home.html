@@ -80,7 +80,7 @@
 				FB.api('/me', function(response) {
 					console.log('Successful login for: ' + response.name);
 					document.getElementById('fb_name').innerHTML = response.name;
-					var imgLink = "http://graph.facebook.com/" + response.id + "/picture";
+					var imgLink = "http://graph.facebook.com/" + response.id + "/picture?width=300&height=300";
 					document.getElementById('fb_pic').src = imgLink;
 				});
 			}
@@ -89,8 +89,7 @@
 		<div class="sidebar">
 			<table>
 				<tr><img id="fb_pic"></tr>
-				<tr>
-					<div id="fb_name"></div>
+				<tr><td><div id="fb_name"></div></td>
 				</tr>
 				<tr><td>Classes</td></tr>
 				<tr><td>Groups</td></tr>
