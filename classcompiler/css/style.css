@@ -15,3 +15,17 @@
     text-align: center;
     
 }
+
+.sidebar{
+	width: 25%;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	background-color: blue;
+}
+
+#fb_pic{
+	height: 40%;
+	width: 40%;
+}
