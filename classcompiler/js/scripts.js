@@ -139,5 +139,5 @@ function loadUserData(){
 		error: function(object, error){
 			document.getElementsByName("user_email")[0].value = "It didn't work :(";
 		}
-	}
+	});
 }
