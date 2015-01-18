@@ -172,6 +172,7 @@ function addClass(){
 		//add user to list of students in class
 			gun.load("master_course_list").path(course).get(addMeToCourse) // ['EECS 376', 'EECS 342']
 			.blank(function(){
+				console.log("here");
 				var save = {};
 				save[course] = {};
 				gun.load("master_course_list").set(save);
