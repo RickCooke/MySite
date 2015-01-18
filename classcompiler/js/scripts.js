@@ -141,10 +141,16 @@ function loadUserData(){
 }
 
 function createUser(){
+	return;
 	gun.load("fbUUID/" + _global_UUID).blank(function(){
 		gun.set({fbUUID:_global_UUID, contact_email:_global_email, name:_global_name}).key("fbUUID/" + _global_UUID);
 	});
 }
+
+
+
+
+
 /*
 function addClass(){
 	var course = prompt("What class are you in? \n (please enter \"DEPARTMENT COURSENUMBER\" ie EECS 183");
