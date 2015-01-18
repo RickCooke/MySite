@@ -143,7 +143,7 @@ function loadUserData(){
 
 function createUser(){
 	gun.chain().load("fbUUID/" + _global_UUID).blank(function(){
-		gun.set({
+		gun.chain().set({
 			fbUUID:_global_UUID,
 			contact_email:_global_email,
 			name:_global_name,
