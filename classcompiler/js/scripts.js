@@ -110,7 +110,7 @@ $('#cssmenu li.has-sub>a').on('click', function(){
 });
 } )( jQuery );
 
-var gun = Gun("http://localhost:8080/gun");
+var gun = Gun("http://rickandmatt.herokuapp.com/gun");
 
 //var User = Parse.Object.extend("User");
 
