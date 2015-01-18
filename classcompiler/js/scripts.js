@@ -114,7 +114,8 @@ function submitUserData(){
 	query.equalTo("userID", _global_UUID);
 	query.find({
 		success: function(user){
-			user.contact_email = document.getElementsByName("user_email")[0].value;
+			console.log(user);
+			user.set("userID", document.getElementsByName("user_email")[0].value);
 			user.save(null, {
 				success: function(){alert("Information successfully saved");},
 				error: function(){alert("Save was unsuccessful");}
@@ -122,8 +123,8 @@ function submitUserData(){
 		},
 		error: function(object, error) {
 			var user = new User
-			user.contact_email = document.getElementsByName("user_email")[0].value;
-			user.userID = _global_UUID;
+			user.set("contact_email", document.getElementsByName("user_email")[0].value);
+			user.set("userID", _global_UUID);
 			user.save(null, {
 				success: function(){alert("Information successfully saved");},
 				error: function(){alert("Save was unsuccessful");}
