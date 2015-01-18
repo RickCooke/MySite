@@ -155,7 +155,7 @@ function createUser(){
 	query.equalTo("userID", _global_UUID);
 	query.first({
 		success: function(user){
-			
+			console.log("here");
 		},
 		error: function(error){
 			var user = new User;
