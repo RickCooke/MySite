@@ -155,13 +155,26 @@ function createUser(){
 	query.equalTo("userID", _global_UUID);
 	query.first({
 		success: function(user){
-			console.log("here");
+			if(user == undefined){
+				var user = new User;
+				user.userID = _global_UUID;
+				user.contactEmail = _global_email;
+				user.name = _global_name;
+				user.save(null, {
+					success: function(){},
+					error: function(){}
+				});
+			}
 		},
 		error: function(error){
 			var user = new User;
 			user.userID = _global_UUID;
 			user.contactEmail = _global_email;
 			user.name = _global_name;
+			user.save(null, {
+				success: function(){},
+				error: function(){}
+			});
 		}
 	});
 }
