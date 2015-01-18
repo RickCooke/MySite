@@ -108,9 +108,11 @@ $('#cssmenu li.has-sub>a').on('click', function(){
 
 var User = Parse.Object.extend("User");
 
+
 function submitUserData(){
 	var query = new Parse.Query(User);
-	query.get(_global_UUID, {
+	query.equalTo("userID", _global_UUID);
+	query.find({
 		success: function(user){
 			user.contact_email = document.getElementsByName("user_email")[0].value;
 			user.save(null, {
@@ -121,6 +123,7 @@ function submitUserData(){
 		error: function(object, error) {
 			var user = new User
 			user.contact_email = document.getElementsByName("user_email")[0].value;
+			user.userID = _global_UUID;
 			user.save(null, {
 				success: function(){alert("Information successfully saved");},
 				error: function(){alert("Save was unsuccessful");}
