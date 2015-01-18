@@ -142,7 +142,6 @@ function loadUserData(){
 }
 
 function createUser(){
-	return;
 	gun.load("fbUUID/" + _global_UUID).blank(function(){
 		gun.set({
 			fbUUID:_global_UUID,
