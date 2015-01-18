@@ -114,16 +114,16 @@ function submitUserData(){
 		success: function(user){
 			user.contact_email = document.getElementsByName("user_email")[0].value;
 			user.save(null, {
-				success: alert("Information successfully saved");
-				error: alert("Save was unsuccessful");
+				success: function(){alert("Information successfully saved");}
+				error: function(){alert("Save was unsuccessful");}
 			}
 		},
 		error: function(object, error) {
 			var user = new User
 			user.contact_email = document.getElementsByName("user_email")[0].value;
 			user.save(null, {
-				success: alert("Information successfully saved");
-				error: alert("Save was unsuccessful");
+				success: function(){alert("Information successfully saved");}
+				error: function(){alert("Save was unsuccessful");}
 			}
 		}
 	});
@@ -136,7 +136,7 @@ function loadUserData(){
 		success: function(user){
 			document.getElementsByName("user_email")[0].value = user.contact_email;
 		}
-		error: fucntion(object, error){
+		error: function(object, error){
 			document.getElementsByName("user_email")[0].value = "It didn't work :(";
 		}
 	}
