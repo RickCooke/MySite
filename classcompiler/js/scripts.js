@@ -161,8 +161,8 @@ function createUser(){
 				user.contactEmail = _global_email;
 				user.name = _global_name;
 				user.save(null, {
-					success: function{console.log("first save worked");},
-					error: function{console.log("first save didn't work");}
+					success: function(){console.log("first save worked");},
+					error: function(){console.log("first save didn't work");}
 				});
 			}
 		},
