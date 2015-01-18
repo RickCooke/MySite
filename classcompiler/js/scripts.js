@@ -179,7 +179,7 @@ function addClass(){
 				gun.load("master_course_list").path(course).get(addMeToCourse);
 			});
 			function addMeToCourse(courseList){
-				delete courseList._; console.log("add class to Master Class List ->", courseList);
+				console.log("add class to Master Class List ->", courseList);
 				var save = {};
 				save[_global_UUID] = true;
 				this.set(save); // courseList.push(_global_UUID);
