@@ -121,60 +121,26 @@ var gun = Gun("http://rickandmatt.herokuapp.com/gun");
 
 function submitUserData(){
 	
-	
 	gun.load("fbUUID/" + _global_UUID).get(function(user){
 		this.set({
 			contact_email: document.getElementsByName("user_email")[0].value || user.contact_email,
-			contact_phoneNumber: document.getElementsByName("user_phone")[0].value || user.user_phone,
+			contact_phoneNumber: document.getElementsByName("user_phone")[0].value || user.contact_phoneNumber,
 			studyLoc: document.getElementsByName("user_studyLoc")[0].value || user.studyLoc,
 			studyTimes: document.getElementsByName("user_studyTime")[0].value || user.studyTimes
 		});
 	});
 	
-	
-	return;
-	/*var query = new Parse.Query(User);
-	query.equalTo("userID", _global_UUID);
-	query.first({
-		success: function(user){
-			console.log(user);
-			user.set("contact_email", document.getElementsByName("user_email")[0].value);
-			user.save(null, {
-				success: function(){alert("Information successfully saved");},
-				error: function(){alert("Save was unsuccessful");}
-			});
-		},
-		error: function(object, error) {
-			var user = new User
-			user.set("contact_email", document.getElementsByName("user_email")[0].value);
-			user.set("userID", _global_UUID);
-			user.save(null, {
-				success: function(){alert("Information successfully saved");},
-				error: function(){alert("Save was unsuccessful");}
-			})
-		}
-	});
-	*/
 }
 			
 function loadUserData(){
 	
 		gun.load("fbUUID/" + _global_UUID).get(function(user){
 			document.getElementsByName("user_email")[0].value = user.contact_email;
-			document.getElementsByName("user_phone")[0].value = user.user_phone;
+			document.getElementsByName("user_phone")[0].value = user.contact_phoneNumber;
 			document.getElementsByName("user_studyLoc")[0].value = user.studyLoc;
 			document.getElementsByName("user_studyTime")[0].value = user.studyTimes;
 		});
 	
-	/*var query = new Parse.Query(User);
-	query.get(_global_UUID, {
-		success: function(user){
-			document.getElementsByName("user_email")[0].value = user.contact_email;
-		},
-		error: function(object, error){
-			document.getElementsByName("user_email")[0].value = "It didn't work :(";
-		}
-	});*/
 }
 
 function createUser(){
@@ -182,32 +148,5 @@ function createUser(){
 	gun.load("fbUUID/" + _global_UUID).blank(function(){
 		gun.set({fbUUID:_global_UUID, contact_email:_global_email, name:_global_name}).key("fbUUID/" + _global_UUID);
 	});
-	
-	return;
-	/*var query = new Parse.Query(User);
-	query.equalTo("userID", _global_UUID);
-	query.first({
-		success: function(user){
-			if(user == undefined){
-				var user = new User;
-				user.userID = _global_UUID;
-				user.contactEmail = _global_email;
-				user.name = _global_name;
-				user.save(null, {
-					success: function(){console.log("first save worked");},
-					error: function(){console.log("first save didn't work");}
-				});
-			}
-		},
-		error: function(error){
-			var user = new User;
-			user.userID = _global_UUID;
-			user.contactEmail = _global_email;
-			user.name = _global_name;
-			user.save(null, {
-				success: function(){},
-				error: function(){}
-			});
-		}
-	});*/
+
 }
