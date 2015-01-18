@@ -120,7 +120,6 @@ var gun = Gun("http://rickandmatt.herokuapp.com/gun");
 
 
 function submitUserData(){
-	
 	gun.load("fbUUID/" + _global_UUID).get(function(user){
 		this.set({
 			contact_email: document.getElementsByName("user_email")[0].value || user.contact_email,
@@ -129,24 +128,38 @@ function submitUserData(){
 			studyTimes: document.getElementsByName("user_studyTime")[0].value || user.studyTimes
 		});
 	});
-	
+	alert("Information successfully saved!");
 }
 			
 function loadUserData(){
-	
 		gun.load("fbUUID/" + _global_UUID).get(function(user){
 			document.getElementsByName("user_email")[0].value = user.contact_email;
 			document.getElementsByName("user_phone")[0].value = user.contact_phoneNumber;
 			document.getElementsByName("user_studyLoc")[0].value = user.studyLoc;
 			document.getElementsByName("user_studyTime")[0].value = user.studyTimes;
 		});
-	
 }
 
 function createUser(){
-	
 	gun.load("fbUUID/" + _global_UUID).blank(function(){
 		gun.set({fbUUID:_global_UUID, contact_email:_global_email, name:_global_name}).key("fbUUID/" + _global_UUID);
 	});
+}
 
+function addClass(){
+	var course = prompt("What class are you in? \n (please enter \"DEPARTMENT COURSENUMBER\" ie EECS 183");
+	//add class to users list of classes
+	gun.load("fbUUID/" + _global_UUID).get(function(){
+		var arr1 = this.courseList;
+		if(arr1 == undefined)
+			arr2 = [];
+		var arr2 = [course];
+		var arr3 = arr1.concat(arr2);
+		this.set({courseList:arr3});	
+	}
+	//add user to list of students in class
+}
+
+function listClasses(){
+	
 }
