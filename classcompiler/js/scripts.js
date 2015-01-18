@@ -190,9 +190,9 @@ function listClasses(){
 	
 }
 
-gun.load("master_course_list").blank(function(){
-	gun.load("master_course_list").set({}).key("master_course_list");
+gun.chain().load("master_course_list").blank(function(){
+	gun.chain().load("master_course_list").set({type: 'course list'}).key("master_course_list");
 });
-gun.load("master_group_list").blank(function(){
-	gun.load("master_group_list").set({}).key("master_group_list");
+gun.chain().load("master_group_list").blank(function(){
+	gun.chain().load("master_group_list").set({type: 'group list'}).key("master_group_list");
 });
