@@ -114,7 +114,8 @@ $('#cssmenu li.has-sub>a').on('click', function(){
 });
 } )( jQuery );
 
-var gun = Gun("http://rickandmatt.herokuapp.com/gun");
+//var gun = Gun("http://rickandmatt.herokuapp.com/gun");
+var gun = Gun("http://localhost:8080/gun");
 
 //var User = Parse.Object.extend("User");
 
@@ -143,7 +144,13 @@ function loadUserData(){
 function createUser(){
 	return;
 	gun.load("fbUUID/" + _global_UUID).blank(function(){
-		gun.set({fbUUID:_global_UUID, contact_email:_global_email, name:_global_name}).key("fbUUID/" + _global_UUID);
+		gun.set({
+			fbUUID:_global_UUID,
+			contact_email:_global_email,
+			name:_global_name,
+			courseList: {},
+			groupList: {}
+		}).key("fbUUID/" + _global_UUID);
 	});
 }
 
@@ -151,22 +158,32 @@ function createUser(){
 
 
 
-/*
+
 function addClass(){
 	var course = prompt("What class are you in? \n (please enter \"DEPARTMENT COURSENUMBER\" ie EECS 183");
 	//add class to users list of classes
-	gun.load("fbUUID/" + _global_UUID).get(function(){
-		var arr1 = this.courseList;
-		if(arr1 == undefined)
-			arr2 = [];
-		var arr2 = [course];
-		var arr3 = arr1.concat(arr2);
-		this.set({courseList:arr3});	
+	gun.load("fbUUID/" + _global_UUID).path('courseList')
+		.get(function(courseList){ // ['EECS 376', 'EECS 342']
+			delete courseList._; console.log("addClass -> user's courseList", courseList);
+			var save = {};
+			save[course] = true;
+			this.set(save); // courseList.push(course) // ['EECS 376', 'EECS 342', course]
+			//add user to list of students in class
+			gun.load("master_course_list").path(course).get(addMeToCourse) // ['EECS 376', 'EECS 342']
+			.blank(function(){
+				this.set({});
+				gun.load("master_course_list").path(course).get(addMeToCourse);
+			});
+			function addMeToCourse(courseList){
+				delete courseList._; console.log("add class to Master Class List ->", courseList);
+				var save = {};
+				save[_global_UUID] = true;
+				this.set(save); // courseList.push(_global_UUID);
+			}
+		});
 	}
-	//add user to list of students in class
 }
 
 function listClasses(){
 	
 }
-*/
