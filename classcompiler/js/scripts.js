@@ -79,6 +79,7 @@ function testAPI() {
 		document.getElementById('fb_name').innerHTML = response.name;
 		var imgLink = "http://graph.facebook.com/" + response.id + "/picture?width=300&height=300";
 		document.getElementById('fb_pic').src = imgLink;
+		console.log("asdf", response.id);
 		_global_UUID = response.id;
 		_global_name = response.name;
 		_global_email = response.email;
