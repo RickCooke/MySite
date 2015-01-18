@@ -114,7 +114,7 @@ function submitUserData(){
 		success: function(user){
 			user.contact_email = document.getElementsByName("user_email")[0].value;
 			user.save(null, {
-				success: function(){alert("Information successfully saved");}
+				success: function(){alert("Information successfully saved");},
 				error: function(){alert("Save was unsuccessful");}
 			}
 		},
@@ -122,7 +122,7 @@ function submitUserData(){
 			var user = new User
 			user.contact_email = document.getElementsByName("user_email")[0].value;
 			user.save(null, {
-				success: function(){alert("Information successfully saved");}
+				success: function(){alert("Information successfully saved");},
 				error: function(){alert("Save was unsuccessful");}
 			}
 		}
