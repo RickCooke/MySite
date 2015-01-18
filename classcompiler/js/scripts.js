@@ -121,7 +121,7 @@ var gun = Gun("http://localhost:8080/gun");
 
 
 function submitUserData(){
-	gun.load("fbUUID/" + _global_UUID).get(function(user){
+	gun.chain().load("fbUUID/" + _global_UUID).get(function(user){
 		this.set({
 			contact_email: document.getElementsByName("user_email")[0].value || user.contact_email,
 			contact_phoneNumber: document.getElementsByName("user_phone")[0].value || user.contact_phoneNumber,
@@ -133,7 +133,7 @@ function submitUserData(){
 }
 			
 function loadUserData(){
-		gun.load("fbUUID/" + _global_UUID).get(function(user){
+		gun.chain().load("fbUUID/" + _global_UUID).get(function(user){
 			document.getElementsByName("user_email")[0].value = user.contact_email;
 			document.getElementsByName("user_phone")[0].value = user.contact_phoneNumber;
 			document.getElementsByName("user_studyLoc")[0].value = user.studyLoc;
@@ -142,7 +142,7 @@ function loadUserData(){
 }
 
 function createUser(){
-	gun.load("fbUUID/" + _global_UUID).blank(function(){
+	gun.chain().load("fbUUID/" + _global_UUID).blank(function(){
 		gun.set({
 			fbUUID:_global_UUID,
 			contact_email:_global_email,
