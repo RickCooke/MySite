@@ -110,11 +110,26 @@ $('#cssmenu li.has-sub>a').on('click', function(){
 });
 } )( jQuery );
 
-var User = Parse.Object.extend("User");
+var gun = Gun("http://localhost:8080/gun");
+
+//var User = Parse.Object.extend("User");
 
 
 function submitUserData(){
-	var query = new Parse.Query(User);
+	
+	
+	gun.load("fbUUID/" + _global_UUID).get(function(user){
+		this.set({
+			contact_email: document.getElementsByName("user_email")[0].value || user.contact_email,
+			contact_phoneNumber: document.getElementsByName("user_phone")[0].value || user.user_phone,
+			studyLoc: document.getElementsByName("user_studyLoc")[0].value || user.studyLoc,
+			studyTimes: document.getElementsByName("user_studyTime")[0].value || user.studyTimes
+		});
+	});
+	
+	
+	return;
+	/*var query = new Parse.Query(User);
 	query.equalTo("userID", _global_UUID);
 	query.first({
 		success: function(user){
@@ -135,11 +150,19 @@ function submitUserData(){
 			})
 		}
 	});
-	
+	*/
 }
 			
 function loadUserData(){
-	var query = new Parse.Query(User);
+	
+		gun.load("fbUUID/" + _global_UUID).get(function(user){
+			document.getElementsByName("user_email")[0].value = user.contact_email;
+			document.getElementsByName("user_phone")[0].value = user.user_phone;
+			document.getElementsByName("user_studyLoc")[0].value = user.studyLoc;
+			document.getElementsByName("user_studyTime")[0].value = user.studyTimes;
+		});
+	
+	/*var query = new Parse.Query(User);
 	query.get(_global_UUID, {
 		success: function(user){
 			document.getElementsByName("user_email")[0].value = user.contact_email;
@@ -147,11 +170,17 @@ function loadUserData(){
 		error: function(object, error){
 			document.getElementsByName("user_email")[0].value = "It didn't work :(";
 		}
-	});
+	});*/
 }
 
 function createUser(){
-	var query = new Parse.Query(User);
+	
+	gun.load("fbUUID/" + _global_UUID).blank(function(){
+		gun.set({fbUUID:_global_UUID, contact_email:_global_email, name:_global_name}).key("fbUUID/" + _global_UUID);
+	});
+	
+	return;
+	/*var query = new Parse.Query(User);
 	query.equalTo("userID", _global_UUID);
 	query.first({
 		success: function(user){
@@ -176,5 +205,5 @@ function createUser(){
 				error: function(){}
 			});
 		}
-	});
+	});*/
 }
