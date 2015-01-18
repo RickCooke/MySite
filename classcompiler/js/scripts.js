@@ -1,4 +1,6 @@
 var _global_UUID;
+var _global_email;
+var _global_name;
 
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
@@ -78,6 +80,8 @@ function testAPI() {
 		var imgLink = "http://graph.facebook.com/" + response.id + "/picture?width=300&height=300";
 		document.getElementById('fb_pic').src = imgLink;
 		_global_UUID = response.id;
+		_global_name = response.name;
+		_global_email = response.email;
 	});
 }
 
@@ -112,10 +116,10 @@ var User = Parse.Object.extend("User");
 function submitUserData(){
 	var query = new Parse.Query(User);
 	query.equalTo("userID", _global_UUID);
-	query.find({
+	query.first({
 		success: function(user){
 			console.log(user);
-			user.set("userID", document.getElementsByName("user_email")[0].value);
+			user.set("contact_email", document.getElementsByName("user_email")[0].value);
 			user.save(null, {
 				success: function(){alert("Information successfully saved");},
 				error: function(){alert("Save was unsuccessful");}
@@ -142,6 +146,22 @@ function loadUserData(){
 		},
 		error: function(object, error){
 			document.getElementsByName("user_email")[0].value = "It didn't work :(";
+		}
+	});
+}
+
+function createUser(){
+	var query = new Parse.Query(User);
+	query.equalTo("userID", _global_UUID);
+	query.first({
+		success: function(user){
+			
+		},
+		error: function(error){
+			var user = new User;
+			user.userID = _global_UUID;
+			user.contactEmail = _global_email;
+			user.name = _global_name;
 		}
 	});
 }
