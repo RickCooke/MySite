@@ -168,7 +168,9 @@ function addClass(){
 			var save = {};
 			save[course] = true;
 			this.set(save); // courseList.push(course) // ['EECS 376', 'EECS 342', course]
-			//add user to list of students in class
+			})
+	
+		//add user to list of students in class
 			gun.load("master_course_list").path(course).get(addMeToCourse) // ['EECS 376', 'EECS 342']
 			.blank(function(){
 				this.set({});
@@ -180,8 +182,6 @@ function addClass(){
 				save[_global_UUID] = true;
 				this.set(save); // courseList.push(_global_UUID);
 			}
-		});
-	}
 }
 
 function listClasses(){
