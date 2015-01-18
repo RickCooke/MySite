@@ -82,6 +82,8 @@ function testAPI() {
 		_global_UUID = response.id;
 		_global_name = response.name;
 		_global_email = response.email;
+		
+		var startPage = (startPage || function(){})();
 	});
 }
 
