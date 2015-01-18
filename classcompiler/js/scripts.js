@@ -85,7 +85,7 @@ function testAPI() {
 		_global_email = response.email;
 		
 		console.log("is startPage defined?", startPage);
-		var startPage = (startPage || function(){ console.log("nothing happened.") })();
+		(window.startPage || function(){ console.log("nothing happened.") })();
 	});
 }
 
