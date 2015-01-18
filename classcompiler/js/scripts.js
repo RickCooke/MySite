@@ -1,3 +1,5 @@
+var _global_UUID;
+
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
 	console.log('statusChangeCallback');
@@ -75,9 +77,11 @@ function testAPI() {
 		document.getElementById('fb_name').innerHTML = response.name;
 		var imgLink = "http://graph.facebook.com/" + response.id + "/picture?width=300&height=300";
 		document.getElementById('fb_pic').src = imgLink;
+		_global_UUID = response.id;
 	});
 }
 
+Parse.initialize("3Ph8iDUWqeAveayG8i8s9uKqwnTJr5UUH2N8r0o5", "ZNFh3179ASnfXqIvxImjKdOGcgyoMskITrAvxwH1");
 
 ( function( $ ) {
 $( document ).ready(function() {
@@ -106,5 +110,34 @@ var User = Parse.Object.extend("User");
 
 function submitUserData(){
 	var query = new Parse.Query(User);
-	query.get(
+	query.get(_global_UUID, {
+		success: function(user){
+			user.contact_email = document.getElementsByName("user_email")[0].value;
+			user.save(null, {
+				success: alert("Information successfully saved");
+				error: alert("Save was unsuccessful");
+			}
+		},
+		error: function(object, error) {
+			var user = new User
+			user.contact_email = document.getElementsByName("user_email")[0].value;
+			user.save(null, {
+				success: alert("Information successfully saved");
+				error: alert("Save was unsuccessful");
+			}
+		}
+	});
+	
+}
+			
+function loadUserData(){
+	var query = new Parse.Query(User);
+	query.get(_global_UUID, {
+		success: function(user){
+			document.getElementsByName("user_email")[0].value = user.contact_email;
+		}
+		error: fucntion(object, error){
+			document.getElementsByName("user_email")[0].value = "It didn't work :(";
+		}
+	}
 }
