@@ -191,8 +191,10 @@ function listClasses(){
 }
 
 gun.chain().load("master_course_list").blank(function(){
-	gun.chain().load("master_course_list").set({type: 'course list'}).key("master_course_list");
+	alert(1);
+	gun.load("master_course_list").set({type: 'course list'}).key("master_course_list");
 });
 gun.chain().load("master_group_list").blank(function(){
-	gun.chain().load("master_group_list").set({type: 'group list'}).key("master_group_list");
+	alert(2);
+	gun.load("master_group_list").set({type: 'group list'}).key("master_group_list");
 });
