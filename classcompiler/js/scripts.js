@@ -116,7 +116,7 @@ function submitUserData(){
 			user.save(null, {
 				success: function(){alert("Information successfully saved");},
 				error: function(){alert("Save was unsuccessful");}
-			}
+			});
 		},
 		error: function(object, error) {
 			var user = new User
@@ -124,7 +124,7 @@ function submitUserData(){
 			user.save(null, {
 				success: function(){alert("Information successfully saved");},
 				error: function(){alert("Save was unsuccessful");}
-			}
+			})
 		}
 	});
 	
