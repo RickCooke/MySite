@@ -135,7 +135,7 @@ function loadUserData(){
 	query.get(_global_UUID, {
 		success: function(user){
 			document.getElementsByName("user_email")[0].value = user.contact_email;
-		}
+		},
 		error: function(object, error){
 			document.getElementsByName("user_email")[0].value = "It didn't work :(";
 		}
