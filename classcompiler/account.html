@@ -91,7 +91,7 @@
 		<div class="sidebar">
 			<table>
 				<tr><td><img id="fb_pic"></td></tr>
-				<tr><td><div id="fb_name"></div></td></tr>
+				<tr><a href="home.html"><td><div id="fb_name"></div></td></a></tr>
 			</table>
 			<div id='cssmenu'>
 				<ul>
@@ -108,12 +108,25 @@
 								 <li><a href='#'><span>Homestead & Co.</span></a></li>
 							</ul>
 					 </li>
-					 <li class="active last"><a href="#"><span>Account</span></a></li>
+					 <li class="active last"><a href="account.html"><span>Account</span></a></li>
 				</ul>
 				</div>
 		</div>
 		<div class="main">
-			
+			<h1>User Information</h1>
+			<form id="email_form">
+				<h2>Contact email: </h2><input type="text" name="user_email">
+			</form>
+			<form id="phone_form">
+				<h2>Phone number (optional): </h2><input type="text" name="user_phone">
+			</form>
+			<form id="studyLoc_form">
+				<h2>Favorite Study Locations (ie. DUDE, UgLi, etc.): </h2><input type="text" name="user_studyLoc">
+			</form>
+			<form id="studyTimes_form">
+				<h2>Best Days and Times to Study (ie. Wed nights, anything but Fridays, etc.): </h2><input type="text" name="user_studyTime">
+			</form>
+			<button class="submit_button" onclick="submitData">Save</button>
 		</div>
 </body>
 </html>
