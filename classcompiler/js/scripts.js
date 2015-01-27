@@ -32,13 +32,13 @@ function statusChangeCallback(response) {
 window.fbAsyncInit = function() {
 FB.init({
 	appId      : '743159892428841',
-	cookie     : true,  // enable cookies to allow the server to access 
+	cookie     : true,  // enable cookies to allow the server to access
 											// the session
 	xfbml      : true,  // parse social plugins on this page
 	version    : 'v2.1' // use version 2.1
 });
 
-// Now that we've initialized the JavaScript SDK, we call 
+// Now that we've initialized the JavaScript SDK, we call
 // FB.getLoginStatus().  This function gets the state of the
 // person visiting this page and can return one of three states to
 // the callback you provide.  They can be:
@@ -66,7 +66,7 @@ FB.getLoginStatus(function(response) {
 	var js, fjs = d.getElementsByTagName(s)[0];
 	if (d.getElementById(id)) return;
 	js = d.createElement(s); js.id = id;
-	js.src = "//connect.facebook.net/en_US/sdk.js";
+	js.src = "http://connect.facebook.net/en_US/sdk.js";
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
@@ -75,21 +75,25 @@ FB.getLoginStatus(function(response) {
 function testAPI() {
 	console.log('Welcome!  Fetching your information.... ');
 	FB.api('/me', function(response) {
+		if(response.error && window.DEV){
+			response.name = "Mark Nadal";
+			response.id = "1072230032"; // this is Mark's real FBuuid
+			response.email = "mark@gunDB.io";
+		}
 		console.log('Successful login for: ' + response.name);
 		document.getElementById('fb_name').innerHTML = response.name;
 		var imgLink = "http://graph.facebook.com/" + response.id + "/picture?width=300&height=300";
 		document.getElementById('fb_pic').src = imgLink;
-		console.log("asdf", response.id);
 		_global_UUID = response.id;
 		_global_name = response.name;
 		_global_email = response.email;
-		
-		console.log("is startPage defined?", startPage);
+
 		(window.startPage || function(){ console.log("nothing happened.") })();
 	});
 }
+if(location.protocol === 'file:'){ window.DEV = true; setTimeout(testAPI, 250) } // EDIT BY MARK!
 
-Parse.initialize("3Ph8iDUWqeAveayG8i8s9uKqwnTJr5UUH2N8r0o5", "ZNFh3179ASnfXqIvxImjKdOGcgyoMskITrAvxwH1");
+//Parse.initialize("3Ph8iDUWqeAveayG8i8s9uKqwnTJr5UUH2N8r0o5", "ZNFh3179ASnfXqIvxImjKdOGcgyoMskITrAvxwH1");
 
 ( function( $ ) {
 $( document ).ready(function() {
@@ -114,14 +118,13 @@ $('#cssmenu li.has-sub>a').on('click', function(){
 });
 } )( jQuery );
 
-//var gun = Gun("http://rickandmatt.herokuapp.com/gun");
-var gun = Gun("http://localhost:8080/gun");
+var gun = Gun("http://rickandmatt.herokuapp.com/gun");
 
 //var User = Parse.Object.extend("User");
 
 
 function submitUserData(){
-	gun.chain().load("fbUUID/" + _global_UUID).get(function(user){
+	gun.load("fbUUID/" + _global_UUID).get(function(user){
 		this.set({
 			contact_email: document.getElementsByName("user_email")[0].value || user.contact_email,
 			contact_phoneNumber: document.getElementsByName("user_phone")[0].value || user.contact_phoneNumber,
@@ -131,9 +134,9 @@ function submitUserData(){
 	});
 	alert("Information successfully saved!");
 }
-			
+
 function loadUserData(){
-		gun.chain().load("fbUUID/" + _global_UUID).get(function(user){
+		gun.load("fbUUID/" + _global_UUID).get(function(user){
 			document.getElementsByName("user_email")[0].value = user.contact_email;
 			document.getElementsByName("user_phone")[0].value = user.contact_phoneNumber;
 			document.getElementsByName("user_studyLoc")[0].value = user.studyLoc;
@@ -142,8 +145,8 @@ function loadUserData(){
 }
 
 function createUser(){
-	gun.chain().load("fbUUID/" + _global_UUID).blank(function(){
-		gun.chain().set({
+	gun.load("fbUUID/" + _global_UUID).blank(function(){
+		gun.set({
 			fbUUID:_global_UUID,
 			contact_email:_global_email,
 			name:_global_name,
@@ -161,40 +164,37 @@ function createUser(){
 function addClass(){
 	var course = prompt("What class are you in? \n (please enter \"DEPARTMENT COURSENUMBER\" ie EECS 183");
 	//add class to users list of classes
-	gun.load("fbUUID/" + _global_UUID).path('courseList')
-		.get(function(courseList){ // ['EECS 376', 'EECS 342']
+	gun.load("fbUUID/" + _global_UUID).path('courseList').get(function(courseList){ // ['EECS 376', 'EECS 342']
+			console.log("addClass -> courseList", courseList);
 			delete courseList._; console.log("addClass -> user's courseList", courseList);
 			var save = {};
 			save[course] = true;
 			this.set(save); // courseList.push(course) // ['EECS 376', 'EECS 342', course]
-			})
-	
-		//add user to list of students in class
-			gun.load("master_course_list").path(course).get(addMeToCourse); // ['EECS 376', 'EECS 342']
-			gun.load("master_course_list").path(course).blank(function(){
-				console.log("here");
-				var save = {};
-				save[course] = {};
-				gun.load("master_course_list").set(save);
-				gun.load("master_course_list").path(course).get(addMeToCourse);
-			});
-			function addMeToCourse(courseList){
-				console.log("add class to Master Class List ->", courseList);
-				var save = {};
-				save[_global_UUID] = true;
-				this.set(save); // courseList.push(_global_UUID);
-			}
+	});
+
+	//add user to list of students in class
+	gun.load("master_course_list").path(course).get(addMeToCourse); // ['EECS 376', 'EECS 342']
+	gun.load("master_course_list").path(course).blank(function(){
+		var save = {};
+		save[course] = {};
+		gun.load("master_course_list").set(save);
+		gun.load("master_course_list").path(course).get(addMeToCourse);
+	});
+	function addMeToCourse(courseList){
+		console.log("add class to Master Class List ->", courseList);
+		var save = {};
+		save[_global_UUID] = true;
+		this.set(save); // courseList.push(_global_UUID);
+	}
 }
 
 function listClasses(){
-	
+
 }
 
-gun.chain().load("master_course_list").blank(function(){
-	alert(1);
-	gun.load("master_course_list").set({type: 'course list'}).key("master_course_list");
+gun.load("master_course_list").blank(function(){
+	gun.set({type: 'course list'}).key("master_course_list");
 });
-gun.chain().load("master_group_list").blank(function(){
-	alert(2);
-	gun.load("master_group_list").set({type: 'group list'}).key("master_group_list");
+gun.load("master_group_list").blank(function(){
+	gun.set({type: 'group list'}).key("master_group_list");
 });
