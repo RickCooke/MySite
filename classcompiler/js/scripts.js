@@ -75,11 +75,6 @@ FB.getLoginStatus(function(response) {
 function testAPI() {
 	console.log('Welcome!  Fetching your information.... ');
 	FB.api('/me', function(response) {
-		if(response.error && window.DEV){
-			response.name = "Mark Nadal";
-			response.id = "1072230032"; // this is Mark's real FBuuid
-			response.email = "mark@gunDB.io";
-		}
 		console.log('Successful login for: ' + response.name);
 		document.getElementById('fb_name').innerHTML = response.name;
 		var imgLink = "http://graph.facebook.com/" + response.id + "/picture?width=300&height=300";
@@ -92,8 +87,6 @@ function testAPI() {
 	});
 }
 if(location.protocol === 'file:'){ window.DEV = true; setTimeout(testAPI, 250) } // EDIT BY MARK!
-
-//Parse.initialize("3Ph8iDUWqeAveayG8i8s9uKqwnTJr5UUH2N8r0o5", "ZNFh3179ASnfXqIvxImjKdOGcgyoMskITrAvxwH1");
 
 ( function( $ ) {
 $( document ).ready(function() {
