@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>UM::Autonomy</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="./img/logo.png">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/flexslider.css">
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="js/jquery.flexslider.js"></script>
+
+	<script type="text/javascript">
+    (function($) {
+      $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+   })(jQuery);
+
+</script>
+<!-- CSS end -->
+</head>
+<body>
+
+<!-- Header -->
+
+<nav>
+	<img src="img/new%20logo.gif" style="display: inline-block; float: left">
+	<ul style="margin: 0px; padding: 0px;">
+	<li><a href="contact_index.html">Contact</a></li>
+	<li><a href="boats_index.html">Boats</a></li>
+	<li><a href="team_index.html">The Team</a></li>
+	<li><a href="sponsors_index.html">Sponsors</a></li>
+	<li class="selected"><a data-scroll href="#Home_anchor">Home</a>
+        <ul>
+            <li><a data-scroll href="#Mission_statement_anchor" style="line-height: 1.1;">Mission Statement</a></li>
+            <li><a data-scroll href="#Team_anchor">Team</a></li>
+            <li><a data-scroll href="#Sponsors_anchor">Sponsors</a></li>
+        </ul>
+    </li>
+	</ul>
+</nav>
+
+<!-- Flexsldier -->
+<a id="Home_anchor"></a>
+<div class="slider-1" style="height: 725px;">
+<div class="flexslider" style="height: 100%;">
+	<ul class="slides">
+		<li style="max-height: 900px;">
+			<img src="img/boats/hugh.png">
+		</li>
+		<li style="max-height: 900px;">
+			<img src="img/boats/eve.jpg">
+		</li>
+		<li style="max-height: 900px;" class="flex-active-slide">
+			<img src="img/boats/serenity.png">
+		</li>
+	</ul>
+</div>
+</div>
+<!-- Mission statement-->
+<a id="Mission_statement_anchor" ></a>
+<div style="margin-bottom:100px; margin-top: 100px;">
+    <div class="section_center">
+        <h1>What We Do</h1>
+        <p>
+!!!Need more info on team ie how many members, when it started, etc.!!! UM:Autonomy is an award winning, undergraduate team from the University of Michigan.  Every year we build an autonomous boat to participate in the AUVSI (Association for Unmanned Vehicle Systems International) Foundation Roboboat competition.  The boat, which is completely designed and programmed by  students, must complete a wide range of challenges that are designed to expose students to the many difficulties of autonomous operation. To learn more about this year's compeition <a href="http://www.auvsifoundation.org/foundation/competitions/roboboat">click here</a>
+        </p>
+    </div>
+</div>
+<!-- Team info -->
+<div class="background_image_w_text">
+    <a id="Team_anchor" class="anchor"></a>
+    <img src="img/teamCollage1.jpg"/>
+    <div class="p_overlay" style="background-color: #ffc90f;">
+        <h1>Who We Are</h1>
+        <p>
+        Our fearless leaders Michelle Howard (President) and Lance Cummins (Vice President) work tirelessly to ensure top performance at compeition. All team members, freshman to graduates, come equiped with a strong desire to learn more and work in a collaborative environment.  It is this team mentality that allows us to build upon the lessons learned by those that came before us, always optimizing to be better.  The team is broken up into three specialty groups Electrical, Business, and Hull. Read more about our team <a         href="team/team_index.html">here</a>.
+        </p>
+    </div>
+</div>
+<!-- Sponsors info -->
+<div class="background_image_w_text">
+    <a id="Sponsors_anchor" class="anchor"></a>
+    <img src="img/SponsorsCollage.jpg"/>
+    <div class="p_overlay right" style="background-color: #0994fc; margin-left: 27%;">
+        <h1>How We Do It</h1>
+        <p>
+            Of course our work would not be possible but for the generosity of our amazing sponsors.  Funding the ability for students to learn aspects of engineering that cannot be taught in the classroom <a href="sponsors/sponsors_index.html">these</a> corporations make our work possible. To learn how you can become part of the elite club that is UM::Autonomy Sponsors and earn your company's logo a spot on the prestigious hull of our boat <a href="mailto:michellehoward2010@gmail.com">click here!</a>
+        </p>
+    </div>    
+</div>
+
+</body>
+    
+<script src="js/smooth-scroll.js"></script>
+<script src="js/bind-polyfill.js"></script>
+<script type="text/javascript">
+	smoothScroll.init();        
+</script>
+</html>
