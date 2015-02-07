@@ -1,5 +1,5 @@
 //myJquery.js
-
+/*
 $(document).ready(function(){
 
 	var $li1 = $("nav ul li:nth-child(1)");
@@ -22,3 +22,4 @@ $(document).ready(function(){
 		$li4.fadeOut();	
 	});
 });
+*/
